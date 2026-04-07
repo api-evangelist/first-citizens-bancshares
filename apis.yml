@@ -1,7 +1,12 @@
 aid: first-citizens-bancshares
-url: https://raw.githubusercontent.com/api-evangelist/first-citizens-bancshares/refs/heads/main/apis.yml
+url: 
+  https://raw.githubusercontent.com/api-evangelist/first-citizens-bancshares/refs/heads/main/apis.yml
 modified: '2026-03-21'
 apis: []
 common:
   - type: Website
     url: https://www.first-citizens-bancshares.com
+description: >-
+  First Citizens BancShares is a financial holding company that provides general banking,
+  trust, investment, insurance, and asset management services to individuals, businesses,
+  and professionals across multiple states.
