@@ -1,33 +1,21 @@
-# First Citizens BancShares (first-citizens-bancshares)
-First Citizens BancShares is a Fortune 500 company. This repository captures the APIs, developer tools, and machine-readable API artifacts for First Citizens BancShares.
+# First Citizens BancShares
 
-**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/first-citizens-bancshares/refs/heads/main/apis.yml)
+This is a repository for tracking the APIs, SDKs, and other developer resources for First Citizens BancShares (FCB).
 
-## Scope
-
-- **Type:** Contract
-- **Position:** Consuming
-- **Access:** 3rd-Party
-
-## Tags:
-
- - Fortune 500
-
-## Timestamps
-
-- **Created:** 2026-03-21
-- **Modified:** 2026-03-21
+First Citizens BancShares is a financial holding company that provides general banking, trust, investment, insurance, and asset management services.
 
 ## APIs
 
-No public APIs have been documented yet. Contributions welcome.
+No public developer portal or open APIs have been identified at this time.
 
-## Common Properties
+## Tags
 
-- [Website](https://www.first-citizens-bancshares.com)
+- Banking
+- Financial Services
+- Trust
+- Investment
+- Insurance
 
-## Maintainers
+## Properties
 
-**FN:** API Evangelist
-
-**Email:** info@apievangelist.com
+- [Website](https://www.firstcitizens.com)
