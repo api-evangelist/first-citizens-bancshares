@@ -1,0 +1,36 @@
+generated: '2026-07-23'
+method: searched
+source: https://developer.svb.com/apis/commercial-banking-apis/webhook-api/2.0/webhooks-overview
+spec_type: Webhooks
+notes: >-
+  SVB (First Citizens) publishes a Webhook API (v2.0) that delivers asynchronous
+  event notifications for payment and account activity, so integrations react to
+  state changes without polling. No AsyncAPI document is published; the event
+  surface is a REST-managed webhook subscription API under /v2/event/*. Captured
+  from the public docs — the machine-readable spec is partner-gated (401).
+webhook:
+  version: '2.0'
+  management_base: https://api.svb.com/v2/event
+  model: subscription           # partner subscribes to event-types, receives POST callbacks
+  resources:
+    - name: event-types
+      path: /v2/event/event-types
+      description: Catalog of event types a partner can subscribe to.
+    - name: subscriptions
+      path: /v2/event/subscriptions
+      description: Create, list, update, and delete webhook subscriptions.
+    - name: publishers
+      path: /v2/event/publishers
+      description: Event publishers (source products) available to the partner.
+    - name: events
+      path: /v2/event/events
+      description: Delivered event records; supports test-delivery firing.
+  delivery: HTTPS POST callback to the partner-registered subscription URL
+  verification: >-
+    Callbacks are secured with the same platform trust model (registered
+    endpoints); event payload authenticity follows the platform's JWS/signing
+    posture documented in the Authorization API.
+  event_domains:
+    - Payments (ACH, wires, instant payments, account transfers)
+    - Account activity / balances
+    - Virtual card authorizations and clearings

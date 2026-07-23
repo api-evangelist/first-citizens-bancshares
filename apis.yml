@@ -286,8 +286,30 @@ apis:
 common:
   - type: VulnerabilityDisclosure
     url: security/first-citizens-bancshares-vulnerability-disclosure.yml
+  - type: Security
+    url: https://firstcitizensbank.responsibledisclosure.com
   - type: DomainSecurity
     url: security/first-citizens-bancshares-domain-security.yml
+  - type: Authentication
+    url: authentication/first-citizens-bancshares-authentication.yml
+  - type: Webhooks
+    url: asyncapi/first-citizens-bancshares-webhooks.yml
+  - type: Lifecycle
+    url: lifecycle/first-citizens-bancshares-lifecycle.yml
+  - type: Deprecation
+    url: https://developer.svb.com/apis/commercial-banking-apis/ach-transfers/2.1/ach-transfers-v2-migration-guide
+  - type: Sandbox
+    url: sandbox/first-citizens-bancshares-sandbox.yml
+  - type: Conventions
+    url: conventions/first-citizens-bancshares-conventions.yml
+  - type: Conformance
+    url: conformance/first-citizens-bancshares-conformance.yml
+  - type: WellKnown
+    url: well-known/first-citizens-bancshares-well-known.yml
+  - type: SecurityTxt
+    url: well-known/first-citizens-bancshares-security.txt
+  - type: LLMsTxt
+    url: llms/first-citizens-bancshares-llms.txt
   - type: Website
     url: https://www.firstcitizens.com
   - type: DeveloperPortal

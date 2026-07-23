@@ -1,0 +1,29 @@
+generated: '2026-07-23'
+method: derived
+source: authentication/first-citizens-bancshares-authentication.yml
+notes: >-
+  Standards conformance asserted from the SVB (First Citizens) documented
+  security model. No published compliance-certification program (SOC 2 / PCI /
+  ISO) is exposed on the developer portal, so no `Compliance` pointer is emitted;
+  bank-level attestations exist but are shared under partner NDA, not publicly.
+standards:
+  - id: oauth2
+    conforms: true
+    evidence: OAuth 2.0 client-credentials grant at /v1/security/oauth/token
+  - id: oauth2-client-credentials
+    conforms: true
+    evidence: documented client_id/client_secret token exchange
+  - id: rfc7515-jws
+    conforms: true
+    evidence: detached JSON Web Signature request signing via x-jws-signature header
+  - id: rfc9116-security-txt
+    conforms: true
+    evidence: parent host www.firstcitizens.com publishes /.well-known/security.txt
+  - id: openid-connect
+    conforms: false
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: error envelope not documented publicly; per-product error references only
+  - id: fapi
+    conforms: false
+    evidence: FAPI security profile not claimed in public docs

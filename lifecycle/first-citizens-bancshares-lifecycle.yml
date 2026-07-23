@@ -1,0 +1,33 @@
+generated: '2026-07-23'
+method: searched
+source: https://developer.svb.com/apis/commercial-banking-apis/ach-transfers/2.1/ach-transfers-v2-migration-guide
+notes: >-
+  SVB (First Citizens) versions its commercial banking APIs in the URI path
+  (v1, v2, v2.1) and publishes migration guides when a major version supersedes
+  a prior one. Live probing confirms multiple concurrent ACH versions (1.3, 2.1,
+  2.4) served side by side, evidencing a deprecation-with-migration lifecycle:
+  older major versions remain reachable while partners migrate per the guide.
+  No public status page or SLA document was found (status.svb.com does not
+  resolve; developer.svb.com/status returns only the SPA shell).
+versioning:
+  scheme: uri-path
+  examples: [v1, v2, v2.1]
+  observed_concurrent:
+    ach-transfers: ['1.3', '2.1', '2.4']
+  docs: https://developer.svb.com/apis/commercial-banking-apis/ach-transfers/2.1/ach-overview
+deprecation:
+  policy: migration-guide           # major-version supersession with a published migration path
+  migration_guides:
+    - api: ACH Transfers
+      from: v1
+      to: v2
+      url: https://developer.svb.com/apis/commercial-banking-apis/ach-transfers/2.1/ach-transfers-v2-migration-guide
+  sunset_header: unknown            # RFC 8594 support not documented publicly
+sla:
+  url: null
+  uptime_target: null
+status_page: null                    # no public status page found
+error_references:
+  - https://developer.svb.com/apis/commercial-banking-apis/ach-transfers/2.1/ach-errors
+  - https://developer.svb.com/apis/commercial-banking-apis/wires-api/2.1/wires-errors
+  - https://developer.svb.com/apis/commercial-banking-apis/instant-payments/1.0/instant-payments-errors

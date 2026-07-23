@@ -1,0 +1,21 @@
+generated: '2026-07-23'
+method: searched
+source: https://developer.svb.com/
+notes: >-
+  The SVB developer portal provides a testing surface for its commercial banking
+  APIs: a sandbox environment and an interactive OAuth playground for exercising
+  the client-credentials token flow, alongside downloadable Postman/Insomnia
+  request collections. Specific test values (test account numbers, test card
+  numbers, simulated payment states) are published inside the partner-gated docs
+  and were not captured verbatim to avoid fabrication — the tooling below is what
+  the public portal advertises.
+sandbox:
+  environment: true
+  oauth_playground: true            # interactive token-flow console on the portal
+  separation: partner-registered sandbox credentials distinct from production keys
+  collections:
+    - type: postman
+      note: Portal-published Postman request collection for the commercial banking APIs.
+    - type: insomnia
+      note: Portal-published Insomnia request collection.
+  test_values: partner-gated        # published inside authenticated docs; not captured (no fabrication)

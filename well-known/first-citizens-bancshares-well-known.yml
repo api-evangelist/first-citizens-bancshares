@@ -1,0 +1,36 @@
+generated: '2026-07-23'
+method: searched
+source: live probes of apis.yml + OpenAPI server hosts
+notes: >-
+  The SVB developer portal (developer.svb.com) is a client-rendered SPA that
+  returns its HTML shell (HTTP 200) for every /.well-known/ path, so those 200s
+  are not real discovery documents. The API host (api.svb.com) is partner-gated
+  and returns 401 for all anonymous requests including /.well-known/*. The only
+  genuine well-known document found is the RFC 9116 security.txt on the parent
+  bank corporate host (www.firstcitizens.com).
+documents:
+  - host: https://www.firstcitizens.com
+    path: /.well-known/security.txt          # RFC 9116
+    status: 200
+    file: first-citizens-bancshares-security.txt
+  - host: https://api.svb.com
+    path: /.well-known/security.txt
+    status: 401                              # partner-gated
+  - host: https://api.svb.com
+    path: /.well-known/openid-configuration
+    status: 401                              # partner-gated
+  - host: https://api.svb.com
+    path: /.well-known/oauth-authorization-server
+    status: 401                              # partner-gated
+  - host: https://api.svb.com
+    path: /.well-known/api-catalog
+    status: 401                              # partner-gated
+  - host: https://developer.svb.com
+    path: /.well-known/openid-configuration
+    status: 200                              # SPA HTML shell, not a real document
+  - host: https://developer.svb.com
+    path: /.well-known/oauth-authorization-server
+    status: 200                              # SPA HTML shell, not a real document
+  - host: https://developer.svb.com
+    path: /.well-known/api-catalog
+    status: 200                              # SPA HTML shell, not a real document

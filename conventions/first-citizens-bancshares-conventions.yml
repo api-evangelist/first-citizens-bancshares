@@ -1,0 +1,30 @@
+generated: '2026-07-23'
+method: searched
+source: https://developer.svb.com/apis/commercial-banking-apis/authorization-api/1.0/authorization
+notes: >-
+  Cross-cutting request/response semantics for the SVB (First Citizens)
+  commercial banking API family, captured from the public developer docs. The
+  machine-readable spec is partner-gated (401), so pagination/metadata/rate-limit
+  specifics that live only inside authenticated reference pages are marked
+  unknown rather than fabricated.
+authentication:
+  style: oauth2-client-credentials + detached-jws-signing
+  token_endpoint: https://api.svb.com/v1/security/oauth/token
+  request_signing: x-jws-signature (RFC 7515 detached JWS over the request body)
+  ref: authentication/first-citizens-bancshares-authentication.yml
+idempotency:
+  supported: unknown               # not confirmed in public docs; no pointer emitted (no fabrication)
+versioning:
+  style: uri-path                  # /v1, /v2, /v2.1
+  ref: lifecycle/first-citizens-bancshares-lifecycle.yml
+error_handling:
+  style: per-product error reference pages (ACH, wires, instant payments)
+  envelope: unknown                # error schema is inside partner-gated reference
+  ref: lifecycle/first-citizens-bancshares-lifecycle.yml
+events:
+  style: webhook subscriptions under /v2/event/*
+  ref: asyncapi/first-citizens-bancshares-webhooks.yml
+pagination:
+  style: unknown
+rate_limiting:
+  signaling: unknown

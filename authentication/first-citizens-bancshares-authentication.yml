@@ -1,0 +1,47 @@
+generated: '2026-07-23'
+method: searched
+source: https://developer.svb.com/apis/commercial-banking-apis/authorization-api/1.0/authorization
+docs:
+  - https://developer.svb.com/apis/commercial-banking-apis/authorization-api/1.0/authorization
+  - https://developer.svb.com/apis/commercial-banking-apis/authorization-api/1.0/json-web-signature-jws
+notes: >-
+  The SVB commercial banking platform (now part of First Citizens) uses a
+  two-layer security model documented on the Authorization API and JWS pages.
+  Layer 1 is OAuth 2.0 client-credentials: a partner exchanges its registered
+  client_id/client_secret at the token endpoint for a short-lived bearer access
+  token. Layer 2 is per-request message signing: the partner signs each request
+  payload with a registered private key and attaches a detached JSON Web
+  Signature (RFC 7515), Open-Banking style, so the server can verify integrity
+  and non-repudiation independent of transport. No OpenAPI securityScheme could
+  be derived because the machine-readable spec is partner-gated (api.svb.com
+  returns 401 anonymously); this profile is captured from the public docs.
+summary:
+  types: [oauth2, http]
+  api_key_in: []
+  oauth2_flows: [clientCredentials]
+  message_signing: jws-detached          # RFC 7515, x-jws-signature header
+schemes:
+  - name: OAuth2ClientCredentials
+    type: oauth2
+    flow: clientCredentials
+    tokenUrl: https://api.svb.com/v1/security/oauth/token
+    token_type: Bearer
+    description: >-
+      Client-credentials grant. Partners POST their registered client_id and
+      client_secret to /v1/security/oauth/token and receive a short-lived
+      bearer access token presented as `Authorization: Bearer <token>` on every
+      subsequent call. This is the entry point for all commercial banking APIs.
+    sources:
+      - https://developer.svb.com/apis/commercial-banking-apis/authorization-api/1.0/authorization
+  - name: JWSRequestSignature
+    type: http
+    scheme: signature
+    header: x-jws-signature
+    format: detached-jws                  # RFC 7515 detached JSON Web Signature
+    description: >-
+      Detached JWS request signing. Each request body is signed with the
+      partner's registered signing key; the compact detached signature is sent
+      in the x-jws-signature header. Provides payload integrity and
+      non-repudiation on top of the bearer token.
+    sources:
+      - https://developer.svb.com/apis/commercial-banking-apis/authorization-api/1.0/json-web-signature-jws

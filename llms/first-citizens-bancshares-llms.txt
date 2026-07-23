@@ -1,0 +1,40 @@
+# First Citizens BancShares
+
+> First Citizens BancShares is a super-regional financial holding company (parent of First-Citizens Bank & Trust). Its programmable surface runs through Silicon Valley Bank (SVB) — acquired in 2023 and now a division of First Citizens — whose Apigee-backed developer portal at developer.svb.com publishes a family of partner-gated commercial banking REST APIs for authorization, balances, transfers, ACH, instant payments, wires, stop payment, virtual cards, webhooks, and reference/reachability. Access is partner-gated (commercial onboarding), secured with OAuth 2.0 client-credentials plus detached JWS request signing.
+
+## APIs
+
+- [SVB Authorization API](https://developer.svb.com/apis/commercial-banking-apis/authorization-api/1.0/authorization): OAuth2 client-credentials token issuance + JWS request-signing model.
+- [SVB Account Balance API](https://developer.svb.com/apis/commercial-banking-apis/account-balance/1.0/account-balance-overview): Current and available balances for commercial deposit accounts.
+- [SVB Account Transfer API](https://developer.svb.com/apis/commercial-banking-apis/account-transfer/1.0/account-transfer-overview): Book transfers between a client's own SVB accounts.
+- [SVB ACH Transfers API](https://developer.svb.com/apis/commercial-banking-apis/ach-transfers/2.1/ach-overview): Domestic ACH credits/debits, verified ACH, and IAT domestic entries (v2.1).
+- [SVB Instant Payments API](https://developer.svb.com/apis/commercial-banking-apis/instant-payments/1.0/instant-payments-overview): Real-time, irrevocable payments over U.S. instant rails.
+- [SVB Wires API](https://developer.svb.com/apis/commercial-banking-apis/wires-api/2.1/wires-overview): Domestic and international wire initiation and management (v2.1).
+- [SVB Stop Payment API](https://developer.svb.com/apis/commercial-banking-apis/stop-payment/1.0/stop-payment-overview): Place and inspect stop-payment orders on checks.
+- [SVB Virtual Cards API](https://developer.svb.com/apis/commercial-banking-apis/virtual-cards/2.0/virtual-cards-vcn-overview): Issue and manage virtual card numbers for AP/procurement/travel (v2.0).
+- [SVB Webhook API](https://developer.svb.com/apis/commercial-banking-apis/webhook-api/2.0/webhooks-overview): Asynchronous event notifications via subscriptions under /v2/event/* (v2.0).
+- [SVB Reference API](https://developer.svb.com/apis/commercial-banking-apis/reference-api/1.0/reference-overview): Reachability lookups (e.g. instant-payments creditor-agent reachability).
+
+## Docs
+
+- [SVB Developer Portal](https://developer.svb.com)
+- [Docs Home](https://developer.svb.com/apis/docs-home)
+- [JSON Web Signature (JWS)](https://developer.svb.com/apis/commercial-banking-apis/authorization-api/1.0/json-web-signature-jws)
+- [ACH v2 Migration Guide](https://developer.svb.com/apis/commercial-banking-apis/ach-transfers/2.1/ach-transfers-v2-migration-guide)
+- [ACH Errors](https://developer.svb.com/apis/commercial-banking-apis/ach-transfers/2.1/ach-errors)
+- [Wires Errors](https://developer.svb.com/apis/commercial-banking-apis/wires-api/2.1/wires-errors)
+- [Instant Payments Errors](https://developer.svb.com/apis/commercial-banking-apis/instant-payments/1.0/instant-payments-errors)
+- [Support / Contact](https://developer.svb.com/contact)
+
+## Auth
+
+- OAuth 2.0 client-credentials: POST client_id/client_secret to https://api.svb.com/v1/security/oauth/token for a bearer token.
+- Detached JWS request signing (RFC 7515) via the x-jws-signature header on each request body.
+- Access is partner-gated: onboarding through SVB / First Citizens commercial relationship.
+
+## Company
+
+- [First Citizens](https://www.firstcitizens.com)
+- [Security / Responsible Disclosure](https://firstcitizensbank.responsibledisclosure.com)
+- [Terms of Use](https://www.firstcitizens.com/terms-of-use)
+- [Privacy](https://www.firstcitizens.com/privacy)
