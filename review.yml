@@ -1,0 +1,81 @@
+reviewer: API Evangelist
+date: '2026-07-23'
+provider: First Citizens BancShares
+slug: first-citizens-bancshares
+summary: >-
+  First Citizens BancShares (parent of First-Citizens Bank & Trust) does not
+  operate a first-party developer portal on firstcitizens.com — developer.* and
+  developers.firstcitizens.com do not resolve, and /developers and /api on the
+  main site 404. The bank's real programmable surface comes through Silicon
+  Valley Bank (SVB), acquired in 2023 and now a division of First Citizens.
+  developer.svb.com is a live Apigee-backed developer portal publishing a family
+  of commercial banking REST APIs. api.svb.com is a live authenticated gateway
+  (returns 401 unauthenticated on real endpoints). Consumer account data is also
+  reachable via the Plaid aggregator.
+findings:
+  developer_portal:
+    firstcitizens_first_party: none
+    probes:
+      - url: https://developer.firstcitizens.com
+        status: '000 (no DNS/connection)'
+      - url: https://developers.firstcitizens.com
+        status: '000 (no DNS/connection)'
+      - url: https://api.firstcitizens.com
+        status: '403'
+      - url: https://www.firstcitizens.com/developers
+        status: '404'
+      - url: https://www.firstcitizens.com/api
+        status: '404'
+    svb_portal:
+      url: https://developer.svb.com
+      status: '200'
+      platform: Apigee (React SPA; catalog served from api.svb.com/content/api-catalog-items behind anonymous access token)
+      docs_home: https://developer.svb.com/apis/docs-home
+      note: >-
+        SVB is now a division of First Citizens Bank; developer.svb.com is the
+        effective first-party API surface for the holding company.
+  api_products:
+    catalog: SVB Commercial Banking APIs
+    count: 10
+    enumerated_from: https://developer.svb.com/sitemap.xml
+    products:
+      - Authorization API (1.0) — OAuth2 token + JWS
+      - Account Balance (1.0) — /v1/accounts/balances
+      - Account Transfer (1.0) — /v1/payment/account-transfers
+      - ACH Transfers (2.1) — domestic, verified, IAT; Plaid instant account verification
+      - Instant Payments (1.0) — /v1/payment/instant-payments
+      - Wires API (2.1) — /v2/payment/wires
+      - Stop Payment (1.0) — /v1/payment/stop-checks
+      - Virtual Cards (2.0) — /v2/card/virtualcards + authorizations/clearings/suppliers/templates
+      - Webhook API (2.0) — /v2/event/* subscriptions and events
+      - Reference API (1.0) — instant-payments reachability
+    live_gateway_probe:
+      url: https://api.svb.com/v2/transfer/domestic-achs
+      status: '401 (authenticated endpoint confirmed live)'
+  authentication:
+    model: OAuth2 client_credentials + JSON Web Signature (JWS) request signing
+    token_endpoint: /v1/security/oauth/token
+    evidence: sitemap authorization-api paths + JS bundle references (client_credentials, oauth, JSON Web Signature, JWS, Bearer)
+  specs:
+    downloadable_openapi: false
+    provenance: >-
+      No public OpenAPI/Swagger or Postman is downloadable. The portal renders
+      an interactive API reference client-side; candidate *.json paths on
+      developer.svb.com return the SPA HTML shell (text/html), and the Apigee
+      catalog endpoint requires an anonymous access token (401). API products
+      are therefore listed humanURL-only with no harvested specs — no specs were
+      fabricated.
+  open_finance_posture:
+    fdx_participation: none documented
+    cfpb_1033: no public statement located
+    aggregator_access:
+      - provider: Plaid
+        role: consumer account data aggregation for firstcitizens.com accounts (per Open Banking Tracker); also used inside SVB ACH instant account verification
+    note: >-
+      US voluntary open finance — no mandated contract. First Citizens' consumer
+      side is aggregator-only (Plaid); its documented direct API surface is the
+      partner-gated SVB commercial banking platform.
+  github:
+    org: https://github.com/svb
+    verified_title: 'Silicon Valley Bank · GitHub'
+spec_provenance: none — HTML-only interactive reference, no downloadable OpenAPI

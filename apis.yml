@@ -1,35 +1,309 @@
 aid: first-citizens-bancshares
 name: First Citizens BancShares
+kind: company
 description: >-
-  First Citizens BancShares is a financial holding company that provides
-  general banking, trust, investment, insurance, and asset management services
-  to individuals, businesses, and professionals across multiple states. No
-  public developer portal or open APIs have been identified at this time.
+  First Citizens BancShares is a super-regional financial holding company
+  (parent of First-Citizens Bank & Trust) providing general banking, trust,
+  investment, insurance, and asset-management services to individuals,
+  businesses, and professionals. Its programmable surface runs through Silicon
+  Valley Bank (SVB) — acquired in 2023 and now a division of First Citizens —
+  whose Apigee-backed developer portal at developer.svb.com publishes a family
+  of commercial banking REST APIs covering authorization, account balance,
+  transfers, ACH, instant payments, wires, stop payment, virtual cards,
+  webhooks, and reference/reachability. Access is partner-gated (commercial
+  onboarding); consumer account data is reachable via the Plaid aggregator.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: unknown
+  onboarding: partner
+  trial: false
+  try_now: false
+  public: false
+  label: Partner-gated · Commercial onboarding
+  confidence: medium
+  source:
+    - authentication
+    - apis
+  generated: '2026-07-23'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/first-citizens-bancshares.png
 access: 3rd-Party
 created: '2025-03-01'
-modified: '2026-04-28'
+modified: '2026-07-23'
 position: Consumer
 tags:
   - Banking
   - Financial Services
+  - Commercial Banking
+  - Payments
+  - ACH
+  - Wire Transfers
+  - Virtual Cards
+  - Open Banking
   - Trust
   - Investment
   - Insurance
+  - United States
+  - Super Regional
 url: >-
   https://raw.githubusercontent.com/api-evangelist/first-citizens-bancshares/refs/heads/main/apis.yml
 specificationVersion: '0.19'
-apis: []
+apis:
+  - aid: first-citizens-bancshares:svb-authorization-api
+    name: SVB Authorization API
+    description: >-
+      The Authorization API issues OAuth2 access tokens for the SVB commercial
+      banking platform (now part of First Citizens). Partners exchange client
+      credentials at /v1/security/oauth/token for a bearer token, then sign
+      request payloads with a JSON Web Signature (JWS) using their registered
+      keys. This API is the entry point for every other commercial banking
+      product on the portal and defines the OAuth2 client-credentials plus
+      request-signing security model used across the platform.
+    humanURL: https://developer.svb.com/apis/commercial-banking-apis/authorization-api/1.0/authorization
+    baseURL: https://api.svb.com
+    tags:
+      - Authentication
+      - OAuth2
+      - Security
+      - Commercial Banking
+      - United States
+    properties:
+      - type: Documentation
+        url: https://developer.svb.com/apis/commercial-banking-apis/authorization-api/1.0/authorization
+      - type: APIReference
+        url: https://developer.svb.com/apis/commercial-banking-apis/authorization-api/1.0/authorization-api?path=/v1/security/oauth/token
+      - type: Documentation
+        url: https://developer.svb.com/apis/commercial-banking-apis/authorization-api/1.0/json-web-signature-jws
+  - aid: first-citizens-bancshares:svb-account-balance-api
+    name: SVB Account Balance API
+    description: >-
+      The Account Balance API returns current and available balance information
+      for SVB commercial deposit accounts. Clients query /v1/accounts/balances
+      to retrieve real-time balance positions for cash management, treasury
+      reporting, and reconciliation workflows. It is part of the SVB commercial
+      banking API family operated under First Citizens BancShares and secured
+      with the platform's OAuth2 plus JWS model.
+    humanURL: https://developer.svb.com/apis/commercial-banking-apis/account-balance/1.0/account-balance-overview
+    baseURL: https://api.svb.com
+    tags:
+      - Accounts
+      - Balances
+      - Treasury
+      - Commercial Banking
+      - United States
+    properties:
+      - type: Documentation
+        url: https://developer.svb.com/apis/commercial-banking-apis/account-balance/1.0/account-balance-overview
+      - type: APIReference
+        url: https://developer.svb.com/apis/commercial-banking-apis/account-balance/1.0/account-balance?path=/v1/accounts/balances
+  - aid: first-citizens-bancshares:svb-account-transfer-api
+    name: SVB Account Transfer API
+    description: >-
+      The Account Transfer API moves funds between a client's own SVB accounts.
+      Partners create transfers at /v1/payment/account-transfers and retrieve
+      transfer status by id, enabling internal book transfers and automated cash
+      concentration. It is part of the SVB commercial banking API family under
+      First Citizens BancShares, secured with OAuth2 and JWS request signing.
+    humanURL: https://developer.svb.com/apis/commercial-banking-apis/account-transfer/1.0/account-transfer-overview
+    baseURL: https://api.svb.com
+    tags:
+      - Payments
+      - Transfers
+      - Treasury
+      - Commercial Banking
+      - United States
+    properties:
+      - type: Documentation
+        url: https://developer.svb.com/apis/commercial-banking-apis/account-transfer/1.0/account-transfer-overview
+      - type: APIReference
+        url: https://developer.svb.com/apis/commercial-banking-apis/account-transfer/1.0/account-transfer?path=/v1/payment/account-transfers
+  - aid: first-citizens-bancshares:svb-ach-transfers-api
+    name: SVB ACH Transfers API
+    description: >-
+      The ACH Transfers API (v2.1) originates domestic ACH credits and debits,
+      verified ACH transfers, and IAT (International ACH Transaction) domestic
+      entries. It exposes /v2/transfer/domestic-achs,
+      /v2/transfer/domestic-verified-achs, and /v2/transfer/iat-domestic-achs
+      with create, retrieve, and patch operations, and integrates Plaid-powered
+      instant account verification. Part of the SVB commercial banking family
+      under First Citizens BancShares, it ships a v2 migration guide and detailed
+      error catalog.
+    humanURL: https://developer.svb.com/apis/commercial-banking-apis/ach-transfers/2.1/ach-overview
+    baseURL: https://api.svb.com
+    tags:
+      - Payments
+      - ACH
+      - Transfers
+      - Commercial Banking
+      - United States
+    properties:
+      - type: Documentation
+        url: https://developer.svb.com/apis/commercial-banking-apis/ach-transfers/2.1/ach-overview
+      - type: APIReference
+        url: https://developer.svb.com/apis/commercial-banking-apis/ach-transfers/2.1/ach-transfers?path=/v2/transfer/domestic-achs
+      - type: Documentation
+        url: https://developer.svb.com/apis/commercial-banking-apis/ach-transfers/2.1/ach-transfers-v2-migration-guide
+      - type: Documentation
+        url: https://developer.svb.com/apis/commercial-banking-apis/ach-transfers/2.1/instant-account-verification-v2-plaid-integration
+      - type: Documentation
+        url: https://developer.svb.com/apis/commercial-banking-apis/ach-transfers/2.1/ach-errors
+  - aid: first-citizens-bancshares:svb-instant-payments-api
+    name: SVB Instant Payments API
+    description: >-
+      The Instant Payments API sends and tracks real-time payments over U.S.
+      instant rails. Partners create payments at /v1/payment/instant-payments and
+      retrieve payment status by id for immediate, irrevocable settlement use
+      cases such as disbursements and just-in-time funding. It is part of the SVB
+      commercial banking API family under First Citizens BancShares and includes
+      a dedicated error reference.
+    humanURL: https://developer.svb.com/apis/commercial-banking-apis/instant-payments/1.0/instant-payments-overview
+    baseURL: https://api.svb.com
+    tags:
+      - Payments
+      - Real Time Payments
+      - Instant Payments
+      - Commercial Banking
+      - United States
+    properties:
+      - type: Documentation
+        url: https://developer.svb.com/apis/commercial-banking-apis/instant-payments/1.0/instant-payments-overview
+      - type: APIReference
+        url: https://developer.svb.com/apis/commercial-banking-apis/instant-payments/1.0/instant-payments?path=/v1/payment/instant-payments
+      - type: Documentation
+        url: https://developer.svb.com/apis/commercial-banking-apis/instant-payments/1.0/instant-payments-errors
+  - aid: first-citizens-bancshares:svb-wires-api
+    name: SVB Wires API
+    description: >-
+      The Wires API (v2.1) initiates and manages domestic and international wire
+      transfers. Partners create wires at /v2/payment/wires, retrieve wire status
+      by id, and cancel pending wires, supporting high-value, time-critical
+      treasury payment flows. It is part of the SVB commercial banking API family
+      under First Citizens BancShares, secured with OAuth2 and JWS, and ships a
+      wire-specific error catalog.
+    humanURL: https://developer.svb.com/apis/commercial-banking-apis/wires-api/2.1/wires-overview
+    baseURL: https://api.svb.com
+    tags:
+      - Payments
+      - Wire Transfers
+      - Treasury
+      - Commercial Banking
+      - United States
+    properties:
+      - type: Documentation
+        url: https://developer.svb.com/apis/commercial-banking-apis/wires-api/2.1/wires-overview
+      - type: APIReference
+        url: https://developer.svb.com/apis/commercial-banking-apis/wires-api/2.1/wires-api?path=/v2/payment/wires
+      - type: Documentation
+        url: https://developer.svb.com/apis/commercial-banking-apis/wires-api/2.1/wires-errors
+  - aid: first-citizens-bancshares:svb-stop-payment-api
+    name: SVB Stop Payment API
+    description: >-
+      The Stop Payment API places and inspects stop-payment orders on checks
+      drawn against SVB commercial accounts. Partners create stop requests at
+      /v1/payment/stop-checks and retrieve stop status by id to prevent specific
+      checks from clearing. It is part of the SVB commercial banking API family
+      operated under First Citizens BancShares and secured with the platform's
+      OAuth2 plus JWS model.
+    humanURL: https://developer.svb.com/apis/commercial-banking-apis/stop-payment/1.0/stop-payment-overview
+    baseURL: https://api.svb.com
+    tags:
+      - Payments
+      - Checks
+      - Risk
+      - Commercial Banking
+      - United States
+    properties:
+      - type: Documentation
+        url: https://developer.svb.com/apis/commercial-banking-apis/stop-payment/1.0/stop-payment-overview
+      - type: APIReference
+        url: https://developer.svb.com/apis/commercial-banking-apis/stop-payment/1.0/stop-payment?path=/v1/payment/stop-checks
+  - aid: first-citizens-bancshares:svb-virtual-cards-api
+    name: SVB Virtual Cards API
+    description: >-
+      The Virtual Cards API (v2.0) issues and manages virtual card numbers (VCN)
+      for accounts-payable, procurement, and travel spend. It exposes
+      /v2/card/virtualcards plus authorizations, clearings, real-cards,
+      suppliers, and templates resources, letting partners create single-use or
+      controlled-spend cards and reconcile card activity programmatically. Part
+      of the SVB commercial banking API family under First Citizens BancShares.
+    humanURL: https://developer.svb.com/apis/commercial-banking-apis/virtual-cards/2.0/virtual-cards-vcn-overview
+    baseURL: https://api.svb.com
+    tags:
+      - Cards
+      - Virtual Cards
+      - Payments
+      - Commercial Banking
+      - United States
+    properties:
+      - type: Documentation
+        url: https://developer.svb.com/apis/commercial-banking-apis/virtual-cards/2.0/virtual-cards-vcn-overview
+      - type: APIReference
+        url: https://developer.svb.com/apis/commercial-banking-apis/virtual-cards/2.0/virtual-cards?path=/v2/card/virtualcards
+  - aid: first-citizens-bancshares:svb-webhook-api
+    name: SVB Webhook API
+    description: >-
+      The Webhook API (v2.0) delivers asynchronous event notifications for
+      payment and account activity. Partners manage event-types, events,
+      publishers, and subscriptions under /v2/event/*, creating subscriptions and
+      firing test deliveries so integrations react to state changes without
+      polling. It is part of the SVB commercial banking API family under First
+      Citizens BancShares.
+    humanURL: https://developer.svb.com/apis/commercial-banking-apis/webhook-api/2.0/webhooks-overview
+    baseURL: https://api.svb.com
+    tags:
+      - Webhooks
+      - Events
+      - Notifications
+      - Commercial Banking
+      - United States
+    properties:
+      - type: Documentation
+        url: https://developer.svb.com/apis/commercial-banking-apis/webhook-api/2.0/webhooks-overview
+      - type: APIReference
+        url: https://developer.svb.com/apis/commercial-banking-apis/webhook-api/2.0/webhook-api?path=/v2/event/subscriptions
+  - aid: first-citizens-bancshares:svb-reference-api
+    name: SVB Reference API
+    description: >-
+      The Reference API provides look-up and reachability data supporting the
+      payment products. It exposes
+      /v1/reference/reachability/instant-payments/{creditor_agent_id} so partners
+      can verify whether a receiving financial institution can accept instant
+      payments before origination. It is part of the SVB commercial banking API
+      family under First Citizens BancShares and secured with OAuth2 and JWS.
+    humanURL: https://developer.svb.com/apis/commercial-banking-apis/reference-api/1.0/reference-overview
+    baseURL: https://api.svb.com
+    tags:
+      - Reference Data
+      - Reachability
+      - Payments
+      - Commercial Banking
+      - United States
+    properties:
+      - type: Documentation
+        url: https://developer.svb.com/apis/commercial-banking-apis/reference-api/1.0/reference-overview
+      - type: APIReference
+        url: https://developer.svb.com/apis/commercial-banking-apis/reference-api/1.0/reference-api?path=/v1/reference/reachability/instant-payments/%7Bcreditor_agent_id%7D
 common:
   - type: VulnerabilityDisclosure
     url: security/first-citizens-bancshares-vulnerability-disclosure.yml
   - type: DomainSecurity
     url: security/first-citizens-bancshares-domain-security.yml
-  - type: LinkedIn
-    url: https://www.linkedin.com/company/first-citizens-bank
   - type: Website
     url: https://www.firstcitizens.com
+  - type: DeveloperPortal
+    url: https://developer.svb.com
+  - type: Documentation
+    url: https://developer.svb.com/apis/docs-home
+  - type: GitHubOrganization
+    url: https://github.com/svb
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/first-citizens-bank
+  - type: Support
+    url: https://developer.svb.com/contact
+  - type: TermsOfService
+    url: https://www.firstcitizens.com/terms-of-use
+  - type: PrivacyPolicy
+    url: https://www.firstcitizens.com/privacy
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
