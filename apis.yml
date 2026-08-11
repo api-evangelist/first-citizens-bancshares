@@ -286,7 +286,7 @@ apis:
 common:
   - type: Blog
     url: https://www.firstcitizens.com/wealth/insights
-  - type: SignUp
+  - type: Signup
     url: https://digitalbanking.firstcitizens.com/FCBTC_AutoEnroll/SignUp.html
   - type: VulnerabilityDisclosure
     url: security/first-citizens-bancshares-vulnerability-disclosure.yml
@@ -300,7 +300,7 @@ common:
     url: asyncapi/first-citizens-bancshares-webhooks.yml
   - type: Lifecycle
     url: lifecycle/first-citizens-bancshares-lifecycle.yml
-  - type: Deprecation
+  - type: DeprecationPolicy
     url: https://developer.svb.com/apis/commercial-banking-apis/ach-transfers/2.1/ach-transfers-v2-migration-guide
   - type: Sandbox
     url: sandbox/first-citizens-bancshares-sandbox.yml
