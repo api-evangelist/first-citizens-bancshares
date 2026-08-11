@@ -284,6 +284,10 @@ apis:
       - type: APIReference
         url: https://developer.svb.com/apis/commercial-banking-apis/reference-api/1.0/reference-api?path=/v1/reference/reachability/instant-payments/%7Bcreditor_agent_id%7D
 common:
+  - type: Blog
+    url: https://www.firstcitizens.com/wealth/insights
+  - type: SignUp
+    url: https://digitalbanking.firstcitizens.com/FCBTC_AutoEnroll/SignUp.html
   - type: VulnerabilityDisclosure
     url: security/first-citizens-bancshares-vulnerability-disclosure.yml
   - type: Security
