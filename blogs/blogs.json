@@ -1,0 +1,14 @@
+{
+  "repo": "first-citizens-bancshares",
+  "feeds": [
+    {
+      "source": "https://developer.svb.com/apis/commercial-banking-apis/reference-api/1.0/reference-api?path=/v1/reference/reachability/instant-payments/%7Bcreditor_agent_id%7D",
+      "feed_url": "https://developer.svb.com/apis/commercial-banking-apis/reference-api/1.0/reference-api?path=/v1/reference/reachability/instant-payments/%7Bcreditor_agent_id%7D",
+      "title": "",
+      "saved": 0,
+      "method": "none"
+    }
+  ],
+  "post_count": 0,
+  "fetched": "2026-08-15T12:22:01Z"
+}
