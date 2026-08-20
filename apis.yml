@@ -44,6 +44,20 @@ modified: '2026-07-23'
 position: Consumer
 tags:
   - Banking
+  - Financial-Services
+  - Commercial Banking
+  - Payments
+  - ACH
+  - Wire Transfers
+  - Virtual Cards
+  - Open Banking
+  - Trust
+  - Investment
+  - Insurance
+  - United States
+  - Super Regional
+tags_raw:
+  - Banking
   - Financial Services
   - Commercial Banking
   - Payments
@@ -74,6 +88,11 @@ apis:
     baseURL: https://api.svb.com
     tags:
       - Authentication
+      - Security
+      - Commercial Banking
+      - United States
+    tags_raw:
+      - Authentication
       - OAuth2
       - Security
       - Commercial Banking
@@ -97,6 +116,12 @@ apis:
     humanURL: https://developer.svb.com/apis/commercial-banking-apis/account-balance/1.0/account-balance-overview
     baseURL: https://api.svb.com
     tags:
+      - Account
+      - Balances
+      - Treasury
+      - Commercial Banking
+      - United States
+    tags_raw:
       - Accounts
       - Balances
       - Treasury
@@ -170,6 +195,12 @@ apis:
     humanURL: https://developer.svb.com/apis/commercial-banking-apis/instant-payments/1.0/instant-payments-overview
     baseURL: https://api.svb.com
     tags:
+      - Payments
+      - Real-Time Payments
+      - Instant Payments
+      - Commercial Banking
+      - United States
+    tags_raw:
       - Payments
       - Real Time Payments
       - Instant Payments
@@ -262,6 +293,12 @@ apis:
     humanURL: https://developer.svb.com/apis/commercial-banking-apis/webhook-api/2.0/webhooks-overview
     baseURL: https://api.svb.com
     tags:
+      - Webhook
+      - Event
+      - Notification
+      - Commercial Banking
+      - United States
+    tags_raw:
       - Webhooks
       - Events
       - Notifications
