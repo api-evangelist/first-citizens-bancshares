@@ -196,7 +196,7 @@ apis:
     baseURL: https://api.svb.com
     tags:
       - Payments
-      - Real Time Payments
+      - Real-Time Payments
       - Instant Payments
       - Commercial Banking
       - United States
