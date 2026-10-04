@@ -44,7 +44,7 @@ modified: '2026-07-23'
 position: Consuming
 tags:
   - Banking
-  - Financial-Services
+  - Financial Services
   - Commercial Banking
   - Payments
   - ACH
@@ -70,6 +70,7 @@ tags_raw:
   - Insurance
   - United States
   - Super Regional
+  - Financial-Services
 url: >-
   https://raw.githubusercontent.com/api-evangelist/first-citizens-bancshares/refs/heads/main/apis.yml
 specificationVersion: '0.23'
@@ -249,6 +250,12 @@ apis:
     humanURL: https://developer.svb.com/apis/commercial-banking-apis/stop-payment/1.0/stop-payment-overview
     baseURL: https://api.svb.com
     tags:
+      - Payments
+      - Checks
+      - Risk Management
+      - Commercial Banking
+      - United States
+    tags_raw:
       - Payments
       - Checks
       - Risk
