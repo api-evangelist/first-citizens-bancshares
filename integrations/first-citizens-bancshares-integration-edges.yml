@@ -1,0 +1,16 @@
+generated: '2026-10-12'
+method: none
+source:
+- https://zapier.com/apps/first-citizens-bancshares/integrations
+- https://n8n.io/integrations/first-citizens-bancshares/
+- https://composio.dev/toolkits/first-citizens-bancshares
+- https://monid.ai/tools/first-citizens-bancshares
+checked:
+- https://composio.dev/toolkits/first-citizens-bancshares
+- https://monid.ai/tools/first-citizens-bancshares
+- https://n8n.io/integrations/first-citizens-bancshares/
+- https://zapier.com/apps/first-citizens-bancshares/integrations
+summary: null
+marketplace_apps: []
+edges: []
+templates: []
